@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <p>Click the button for the prompt box.</p>
+    <button onclick="myFunction()">Click Here</button>
+    <p id="largestRepitation"></p>
+    <script>
+        function myFunction() {
+            var person = prompt("Please enter your name", "aanyyeeeddk");
+            if (person != null) {
+                document.getElementById("largestRepitation").innerHTML =
+                    "The answer is:  " + largest_consecutive(person);
+            }
+        }
+
+        function largest_consecutive(inp) {
+
+            if (inp.length === 0) return "";
+            if (inp.length === 1) return inp;
+
+            let largest = "";
+            let consecutive = "";
+            let arr = [], answer = [];
+            for (let i = 0; i < inp.length; i++) {
+                if (i === 0) {
+                    if (inp[i] === inp[i + 1]) {
+                        consecutive += inp[i];
+                    }
+                }
+                if (i > 0) {
+                    if (inp[i] === inp[i - 1]) consecutive += inp[i];
+                    if (inp[i] !== inp[i - 1]) consecutive = inp[i];
+
+                    if (consecutive.length >= largest.length) {
+                        console.log("Hello");
+                        largest = consecutive;
+                        arr.push(largest);
+                    }
+                }
+            }
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i].length === largest.length) answer.push(arr[i]);
+            }
+            return answer;
+        }
+    </script>
+</body>
+
+</html>
